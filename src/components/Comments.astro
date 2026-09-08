@@ -1,0 +1,64 @@
+---
+import siteConfig from "@config";
+
+const { giscus } = siteConfig;
+---
+
+{
+  giscus.enable && (
+    <section class="mt-12 border-t border-gray-200 pt-8 dark:border-gray-800">
+      <script
+        src="https://giscus.app/client.js"
+        data-repo={giscus.repo}
+        data-repo-id={giscus.repoId}
+        data-category={giscus.category}
+        data-category-id={giscus.categoryId}
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-input-position="top"
+        data-theme={giscus.theme}
+        data-lang={giscus.lang}
+        crossorigin="anonymous"
+        async
+        is:inline
+      />
+    </section>
+  )
+}
+
+<script
+  is:inline
+  data-light-theme={giscus.theme}
+  data-dark-theme={giscus.darkTheme}
+>
+  function updateGiscusTheme() {
+    const themeScript = document.querySelector("script[data-light-theme]");
+    const light = themeScript?.getAttribute("data-light-theme") || "light";
+    const dark = themeScript?.getAttribute("data-dark-theme") || "dark";
+
+    const isDark = document.documentElement.classList.contains("dark");
+    const targetTheme = isDark ? dark : light;
+
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (!iframe) return;
+
+    iframe.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: targetTheme,
+          },
+        },
+      },
+      "https://giscus.app",
+    );
+  }
+
+  window.addEventListener("message", (event) => {
+    if (event.origin !== "https://giscus.app") return;
+    if (!(typeof event.data === "object" && event.data.giscus)) return;
+    updateGiscusTheme();
+  });
+
+  document.addEventListener("theme-changed", updateGiscusTheme);
+</script>
