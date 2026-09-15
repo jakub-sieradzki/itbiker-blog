@@ -34,10 +34,10 @@ export function defineConfig(config: SiteConfig): SiteConfig {
 
 export default defineConfig({
   // Main Site Metadata
-  siteTitle: "Mare Blog",
-  author: "Niceeepoiu",
-  authorUrl: "https://github.com/Niceeepoiu",
-  siteUrl: "https://mare-blog.niceeepoiu.workers.dev",
+  siteTitle: "IT Biker Blog",
+  author: "Jakub Sieradzki",
+  authorUrl: "https://github.com/jakub-sieradzki",
+  siteUrl: "https://itbiker.blog",
   // Giscus Comment System Settings
   // Visit https://giscus.app to generate your repository & category details.
   giscus: {
