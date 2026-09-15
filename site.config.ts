@@ -34,7 +34,7 @@ export function defineConfig(config: SiteConfig): SiteConfig {
 
 export default defineConfig({
   // Main Site Metadata
-  siteTitle: "IT Biker Blog",
+  siteTitle: "IT Biker",
   author: "Jakub Sieradzki",
   authorUrl: "https://github.com/jakub-sieradzki",
   siteUrl: "https://itbiker.blog",

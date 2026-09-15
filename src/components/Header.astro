@@ -3,25 +3,26 @@ import siteConfig from "@config";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const Navigation = [
-  { name: "Home", href: "/" },
+  { name: "Główna", href: "/" },
   { name: "Blog", href: "/blog" },
-  { name: "About", href: "/about" },
+  { name: "Poradniki", href: "/poradniki" },
+  { name: "O mnie", href: "/about" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="mx-auto mt-8 flex max-w-5xl items-center justify-between rounded-lg bg-white px-6 py-4 shadow-sm transition-colors duration-200 dark:bg-gray-900"
+  class="mx-auto mt-4 flex max-w-5xl items-center justify-between rounded-lg bg-white/70 px-6 py-4 shadow-sm backdrop-blur-xs transition-colors duration-200 dark:bg-zinc-950/60"
 >
   <a
     href="/"
-    class="text-xl font-bold tracking-tight text-[#1f2937] transition-colors duration-200 hover:text-[#1a73e8] dark:text-gray-100 dark:hover:text-blue-400"
+    class="text-xl w-fit text-nowrap font-bold tracking-tight text-[#1f2937] transition-colors duration-200 hover:text-red-500 dark:text-neutral-100 dark:hover:text-red-700"
   >
     {siteConfig.siteTitle}
   </a>
 
-  <nav class="flex items-center gap-2">
+  <nav class="flex w-fit mx-3 overflow-auto text-nowrap items-center gap-1">
     {
       Navigation.map((item) => {
         const isActive =
@@ -33,8 +34,8 @@ const currentPath = Astro.url.pathname;
             href={item.href}
             class={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
               isActive
-                ? "bg-[#e8f0fe] font-semibold text-[#1a73e8] dark:bg-blue-950/60 dark:text-blue-400"
-                : "text-[#5f6368] hover:scale-105 hover:bg-[#e8f0fe]/70 hover:text-[#1a73e8] active:scale-95 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-blue-400"
+                ? "bg-red-100 font-semibold text-red-400 dark:bg-red-950/60 dark:text-red-400"
+                : "text-neutral-400 hover:bg-red-100/60 hover:text-red-400 active:scale-95 dark:text-neutral-400 dark:hover:bg-red-950/30 dark:hover:text-red-400"
             }`}
           >
             {item.name}

@@ -16,4 +16,12 @@ export default defineConfig({
   },
   site: siteConfig.siteUrl,
   integrations: [sitemap(), mdx()],
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+    },
+  },
 });

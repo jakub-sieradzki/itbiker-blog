@@ -2,17 +2,30 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
+
 @layer base {
   html {
     scrollbar-gutter: stable;
   }
 
   body {
-    @apply bg-gray-100 text-gray-800 transition-colors duration-200 dark:bg-gray-950 dark:text-gray-200;
+    @apply bg-[url(/background_light.jpg)] dark:bg-[url(/background_dark.jpg)] bg-fixed bg-center p-2 text-neutral-800 transition-colors duration-200 dark:bg-zinc-950 dark:text-neutral-200;
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply font-bold tracking-tight text-gray-900 dark:text-gray-100;
+    @apply font-bold tracking-tight text-neutral-900 dark:text-neutral-100;
   }
 
   h1 {
@@ -37,7 +50,7 @@
 
 @layer components {
   .markdown-content {
-    @apply max-w-none text-[#374151] dark:text-gray-300;
+    @apply max-w-none text-neutral-950 dark:text-neutral-300;
 
     & p {
       @apply mb-4 leading-relaxed;
@@ -56,19 +69,19 @@
     }
 
     & h2 {
-      @apply mt-8 mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100;
+      @apply mt-8 mb-4 text-2xl font-bold text-neutral-900 dark:text-neutral-100;
     }
 
     & h3 {
-      @apply mt-6 mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100;
+      @apply mt-6 mb-3 text-xl font-semibold text-neutral-900 dark:text-neutral-100;
     }
 
     & code {
-      @apply rounded bg-gray-100 px-1.5 py-0.5 text-sm text-[#1a73e8] dark:bg-gray-800 dark:text-blue-400;
+      @apply rounded bg-zinc-100 px-1.5 py-0.5 text-sm text-red-500 dark:bg-zinc-800 dark:text-red-400;
     }
 
     & pre {
-      @apply my-5 overflow-x-auto rounded-md bg-[#1e293b] p-4 text-white dark:bg-gray-900;
+      @apply my-5 overflow-x-auto rounded-md bg-zinc-200 p-4 text-white dark:bg-zinc-900;
     }
 
     & pre code {
@@ -76,11 +89,11 @@
     }
 
     & blockquote {
-      @apply my-4 rounded-md border-l-4 border-[#1a73e8] bg-[#e8f0fe]/30 p-4 pb-0.5 shadow-sm dark:border-blue-500 dark:bg-blue-950/30;
+      @apply my-4 rounded-md border-l-4 border-red-500 bg-zinc-100 p-4 pb-0.5 shadow-sm dark:border-red-500 dark:bg-red-950/30;
     }
 
     & a {
-      @apply text-[#1a73e8] hover:underline dark:text-blue-400;
+      @apply text-red-500 hover:underline dark:text-red-400;
     }
 
     & img {
@@ -88,22 +101,22 @@
     }
 
     & table {
-      @apply my-6 w-full border-separate border-spacing-0 overflow-hidden rounded-lg border border-gray-300 text-left text-sm dark:border-gray-800;
+      @apply my-6 w-full border-separate border-spacing-0 overflow-hidden rounded-lg border border-zinc-300 text-left text-sm dark:border-zinc-800;
     }
 
     & th {
-      @apply border-b border-gray-300 bg-gray-100 px-4 py-2.5 font-semibold text-gray-900 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-100;
+      @apply border-b border-zinc-300 bg-zinc-100 px-4 py-2.5 font-semibold text-neutral-900 dark:border-zinc-800 dark:bg-zinc-800 dark:text-neutral-100;
 
       &:not(:last-child) {
-        @apply border-r dark:border-gray-800;
+        @apply border-r dark:border-zinc-800;
       }
     }
 
     & td {
-      @apply border-b border-gray-300 px-4 py-2 dark:border-gray-800;
+      @apply border-b border-zinc-300 px-4 py-2 dark:border-zinc-800;
 
       &:not(:last-child) {
-        @apply border-r dark:border-gray-800;
+        @apply border-r dark:border-zinc-800;
       }
     }
 
@@ -112,12 +125,12 @@
     }
 
     & tr:nth-child(even) {
-      @apply bg-gray-50/50 dark:bg-gray-900/40;
+      @apply bg-zinc-50/50 dark:bg-zinc-900/40;
     }
   }
 }
 
 #nprogress .bar {
-  @apply h-0.5 bg-[#1a73e8] dark:h-px dark:bg-blue-400;
+  @apply h-0.5 bg-red-500 dark:h-px dark:bg-red-700;
   box-shadow: none !important;
 }
